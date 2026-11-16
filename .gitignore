@@ -1,0 +1,6 @@
+node_modules
+jenkins.war
+image.tar
+zap-report.html
+sbom.cdx.json
+api-key.txt

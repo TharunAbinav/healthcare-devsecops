@@ -1,0 +1,14 @@
+# DELIBERATELY INSECURE. Used to prove the cluster rejects bad pods (see demo-block-insecure-pod.bat).
+apiVersion: v1
+kind: Pod
+metadata:
+  name: insecure-test
+  namespace: healthcare
+spec:
+  containers:
+    - name: bad
+      image: alpine:3.20
+      command: ["sleep", "3600"]
+      securityContext:
+        privileged: true
+        runAsUser: 0

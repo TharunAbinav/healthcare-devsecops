@@ -1,0 +1,11 @@
+const express = require('express');
+const router = express.Router();
+
+// DELIBERATELY VULNERABLE: SQL injection + reflected XSS
+router.get('/search', (req, res) => {
+  const q = req.query.q;
+  const sql = "SELECT * FROM patients WHERE name = '" + q + "'";
+  res.send('<h1>Results for ' + q + '</h1><pre>' + sql + '</pre>');
+});
+
+module.exports = router;

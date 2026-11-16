@@ -1,0 +1,14 @@
+node_modules
+.git
+k8s
+demo
+docs
+scripts
+*.bat
+*.md
+Jenkinsfile
+image.tar
+*.html
+*.json
+!package.json
+!package-lock.json

@@ -1,0 +1,27 @@
+# Zero-trust networking: block ALL traffic, then allow only port 3000 into the API.
+# The API makes no outbound calls, so all egress stays blocked.
+# NOTE: Docker Desktop's default network plugin may not enforce NetworkPolicy;
+# the policy is still applied and is enforced on real clusters (Calico, Cilium...).
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: default-deny-all
+  namespace: healthcare
+spec:
+  podSelector: {}
+  policyTypes: ["Ingress", "Egress"]
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-api-ingress
+  namespace: healthcare
+spec:
+  podSelector:
+    matchLabels:
+      app: healthcare-api
+  policyTypes: ["Ingress"]
+  ingress:
+    - ports:
+        - protocol: TCP
+          port: 3000

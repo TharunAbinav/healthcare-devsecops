@@ -1,0 +1,16 @@
+{
+  "name": "healthcare-api",
+  "version": "1.0.0",
+  "description": "Demo patient records API for a DevSecOps pipeline (synthetic data only)",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "express": "^5.3.0",
+    "express-rate-limit": "^8.7.4",
+    "helmet": "^8.3.0"
+  }
+}
